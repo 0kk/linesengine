@@ -12,7 +12,7 @@ def read_line_domain(file, separated):
 			if line.strip() == "":
 				pass
 			else:
-				yield line.strip().split(separated)[1]
+				yield line.strip().split(separated)[1].split(':')[0]
 
 def statistics(file, output):
 	result = {}
@@ -23,6 +23,11 @@ def statistics(file, output):
 			result[domain] += 1
 	with open(output, 'a') as output_w:
 		dump_result = json.dumps(result)
+		sorted_tuples_lst = sorted([(k,v) for (k,v) in result.items()],
+			key=lambda tup: tup[1], reverse=True)
+		for item in sorted_tuples_lst:
+			output_w.write(str(item) + '\n')
+		output_w.write('\n\n\n\n [_____JSON_____] \n\n')
 		output_w.write(dump_result)
 		print('[+] Done')
 		print('[+] Result: ' + dump_result)
