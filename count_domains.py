@@ -1,8 +1,12 @@
+#!/usr/bin/python3
+
+from beautifultable import BeautifulTable
 import json
+
 """
 
 // Author: 0kk
-// Statistics of count of domains in file
+// Statistics count of domains in file
 
 """
 
@@ -35,14 +39,16 @@ def statistics(file, output):
 		dump_result = json.dumps(result)
 		sorted_tuples_lst = sorted([(k,v) for (k,v) in result.items()],
 			key=lambda tup: tup[1], reverse=True)
-		output_w.write('\n\n\n\n [TUPLE] \n\n')
+		output_w.write('\n\n\n\n [DOMAINS] \n\n')
+		table = BeautifulTable()
+		table.column_headers = ["Domain", "Count"]
 		for item in sorted_tuples_lst:
-			output_w.write(str(item) + '\n')
-		output_w.write('\n\n\n\n [JSON] \n\n')
-		output_w.write(dump_result)
+			table.append_row([item[0], item[1]])
+		output_w.write(str(table) + '\n')
+
 		print('[+] Done')
-		print('[+] Result: ' + dump_result)
-		print('[+] Saved at: ' + output)
+		print('[+] Result table + \n' + str(table))
+		print('[+] Saved at ' + output)
 
 
 if __name__ == '__main__':
