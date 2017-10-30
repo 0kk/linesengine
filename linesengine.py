@@ -56,7 +56,7 @@ def statistics(file, output, packing=False):
 		output_w.write(str(table) + '\n')
 
 		print('[+] Done')
-		print('[+] Result table + \n' + str(table))
+		#print('[+] Result table + \n' + str(table))
 		print('[+] Saved at ' + output)
 
 
