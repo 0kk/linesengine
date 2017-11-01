@@ -18,60 +18,73 @@ App for email domain handling.
 	./linesengine.py -i db.txt -o db_result.txt -p true
   
   
-  ----------Raw input example
-j.doe@gmail.com:1111111
-lnk@qip.ru:22222222
-qwerty@web.de;12121212
-qwerty@italy.it;222222222q
-qw23e@web.de:21212121
-gg@web.de:qwqwqw
+	  ----------Raw input example
 
-  ----------Output example (-p false)
+	j.doe@gmail.com:1111111
+
+	lnk@qip.ru:22222222
+
+	qwerty@web.de;12121212
+
+	qwerty@italy.it;222222222q
+
+	qw23e@web.de:21212121
+
+	gg@web.de:qwqwqw
+
+
+  	----------Output example (-p false)
   
-   (env) $python linesengine.py -i input.txt -o stats.txt
-Processing db of lines...: 6it [00:00, 12690.78it/s]
-Sorting tuples...: 100%|#######################| 4/4 [00:00<00:00, 39290.90it/s]
-Creating of table...: 100%|####################| 4/4 [00:00<00:00, 20044.46it/s]
-[+] Done
-[+] Saved at stats.txt
+   	(env) $python linesengine.py -i input.txt -o stats.txt
+   
+	Processing db of lines...: 6it [00:00, 12690.78it/s]
 
------------Stats.txt
-[DOMAINS] 
+	Sorting tuples...: 100%|#######################| 4/4 [00:00<00:00, 39290.90it/s]
 
-+-----------+-------+
-|  Domains  | Count |
-+-----------+-------+
-|  web.de   |   3   |
-+-----------+-------+
-|  qip.ru   |   1   |
-+-----------+-------+
-| italy.it  |   1   |
-+-----------+-------+
-| gmail.com |   1   |
-+-----------+-------+
+	Creating of table...: 100%|####################| 4/4 [00:00<00:00, 20044.46it/s]
 
-------------With '-p true' arg
+	[+] Done
+	[+] Saved at stats.txt
 
-.../packed$ tree.
-├── gmail.com
-│   └── gmail.com.txt
-├── italy.it
-│   └── italy.it.txt
-├── qip.ru
-│   └── qip.ru.txt
-└── web.de
-    └── web.de.txt
+	-----------Stats.txt
 
-4 directories, 4 files
+	[DOMAINS] 
 
--------------
 
-.../packed/web.de$ cat web.de.txt
-qwerty@web.de:12121212
+	+-----------+-------+
+	|  Domains  | Count |
+	+-----------+-------+
+	|  web.de   |   3   |
+	+-----------+-------+
+	|  qip.ru   |   1   |
+	+-----------+-------+
+	| italy.it  |   1   |
+	+-----------+-------+
+	| gmail.com |   1   |
+	+-----------+-------+
 
-qw23e@web.de:21212121
+	------------With '-p true' arg
 
-gg@web.de:qwqwqw
+	.../packed$ tree.
+	├── gmail.com
+	│   └── gmail.com.txt
+	├── italy.it
+	│   └── italy.it.txt
+	├── qip.ru
+	│   └── qip.ru.txt
+	└── web.de
+	    └── web.de.txt
+
+	4 directories, 4 files
+
+	-------------
+
+	.../packed/web.de$ cat web.de.txt
+	qwerty@web.de:12121212
+
+	qw23e@web.de:21212121
+
+	gg@web.de:qwqwqw
 
 
 
